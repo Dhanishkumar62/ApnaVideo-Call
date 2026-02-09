@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
 
     const getHistoryOfUser = async () => {
         try {
-            let request = await client.get("/add_to_activity", {
+            let request = await client.get("/get_to_activity", {
                 params: {
                     token: localStorage.getItem("token")
                 }
