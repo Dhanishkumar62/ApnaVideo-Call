@@ -61,11 +61,7 @@ export default function VideoMeetComponent() {
 
     let [videos, setVideos] = useState([])
 
-    // TODO
-    // if(isChrome() === false) {
-
-
-    // }
+    
 
     useEffect(() => {
         console.log("HELLO")
@@ -295,14 +291,14 @@ export default function VideoMeetComponent() {
                 clients.forEach((socketListId) => {
 
                     connections[socketListId] = new RTCPeerConnection(peerConfigConnections)
-                    // Wait for their ice candidate       
+                         
                     connections[socketListId].onicecandidate = function (event) {
                         if (event.candidate != null) {
                             socketRef.current.emit('signal', socketListId, JSON.stringify({ 'ice': event.candidate }))
                         }
                     }
 
-                    // Wait for their video stream
+                    
                     connections[socketListId].onaddstream = (event) => {
                         console.log("BEFORE:", videoRef.current);
                         console.log("FINDING ID: ", socketListId);
@@ -443,10 +439,24 @@ export default function VideoMeetComponent() {
     }
 
     
-    let connect = () => {
-        setAskForUsername(false);
-        getMedia();
-    }
+    // let connect = () => {
+    //     setAskForUsername(false);
+    //     getMedia();
+    // }
+
+    let connect = async () => {
+
+   try {
+     await navigator.mediaDevices.getUserMedia({ video:true, audio:true });
+   } catch(e){
+     alert("Camera permission denied");
+     return;
+   }
+
+   setAskForUsername(false);
+   getMedia();
+}
+
 
 
     return (
