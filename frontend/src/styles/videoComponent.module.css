@@ -61,3 +61,10 @@
 
 
 
+@media (max-width:768px){
+  .chatRoom{
+    height:30vh;
+    width:60vw;
+    bottom:60px;
+  }
+}
