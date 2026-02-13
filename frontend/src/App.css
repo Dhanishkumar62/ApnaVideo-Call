@@ -13,7 +13,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .landingPageContainer nav h2 {
@@ -25,7 +24,13 @@
   display: flex;
   gap: 1.6rem;
   cursor: pointer;
+}
 
+/* ✅ FIX: NAVLIST P TAGS KO STYLE */
+.landingPageContainer nav .navlist p {
+  color: white;
+  margin: 0;
+  padding: 5px 0;
 }
 
 .landingMainContainer {
@@ -65,8 +70,8 @@
   justify-content: space-between;
   padding-inline: 20px;
   text-align: center;
-
 }
+
 .meetContainer {
   display: flex;
   padding-inline: 20px;
@@ -75,13 +80,10 @@
   justify-content: center;
 }
 
-
-
 .leftPanel {
   height: 100%;
   display: flex;
   align-items: center;
-
 }
 
 .rightPanel {
@@ -95,58 +97,68 @@
   border-radius: 20px;
 }
 
-
-.mobileMenu{
-  display:none;
-  font-size:24px;
-  cursor:pointer;
-  color:white;
+.mobileMenu {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
+/* ✅ Mobile Menu Fix */
+@media(max-width: 768px) {
+  .mobileMenu {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    z-index: 1001;
+  }
 
+  .landingPageContainer nav .navlist {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    background: #000;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 15px;
+    z-index: 1000;
+    flex-direction: column;
+    min-width: 150px;
+  }
 
-@media(max-width:768px){
+  .landingPageContainer nav .navlist.open {
+    display: flex;
+  }
 
-.landingMainContainer{
-  flex-direction:column;
-  padding:20px;
-  height:auto;
-}
+  .landingPageContainer nav .navlist p {
+    color: white;
+    margin: 0;
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
 
-.landingMainContainer h1{
-  font-size:1.5rem;
-}
-
-.landingMainContainer img{
-  width:100%;
-  height:auto;
-  margin-top:20px;
-}
-
-
-.mobileMenu{
-  display:block;
-  position:absolute;
-  right:20px;
-  top:22px;
-}
-
-
-.navlist{
-  display:none;
-}
-
-.navlist.open{
-  display:flex;
-  flex-direction:column;
-  position:absolute;
-  top:60px;
-  right:15px;
-  background:#000;
-  padding:10px 15px;
-  border-radius:10px;
-  gap:10px;
-  z-index:1000;
-}
-
+  .landingPageContainer nav .navlist p:hover {
+    background: #333;
+    border-radius: 5px;
+  }
+  
+  /* Responsive fixes */
+  .landingMainContainer {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+  
+  .landingMainContainer h1 {
+    font-size: 1.8rem;
+  }
+  
+  .landingMainContainer img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
 }
